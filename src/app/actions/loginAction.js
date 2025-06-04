@@ -22,7 +22,7 @@ export async function loginAction(loginData, role = "admin") {
       credentials: "include",
     });
 
-    const { success, user, message, token } = await res.json();
+    const { success, data, message, token } = await res.json();
 
     if (success && token) {
       const cookieStore = cookies();
@@ -37,7 +37,7 @@ export async function loginAction(loginData, role = "admin") {
       });
     }
 
-    return { success, user, message };
+    return { success, data, message };
   } catch (error) {
     console.error("Login error:", error);
     return { success: false, message: "Login error." };

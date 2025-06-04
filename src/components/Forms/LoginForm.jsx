@@ -17,11 +17,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { loginFormSchema } from "@/lib/schema/loginFormSchema";
 import { loginAction } from "@/app/actions/loginAction";
+import userStorage from "@/store/userStore";
 
 const LoginForm = ({ role = "admin" }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { setCurrentUserId, setCurrentUserRole, setCurrentUserEmail } =
+    userStorage();
 
   const form = useForm({
     resolver: zodResolver(loginFormSchema),
@@ -43,7 +46,10 @@ const LoginForm = ({ role = "admin" }) => {
       console.log(`Calling  with data:`, data);
 
       const res = await loginAction(data, role);
-      console.log(res);
+      console.log("res", res);
+      setCurrentUserId(res.data._id);
+      setCurrentUserRole(res.data.role);
+      setCurrentUserEmail(res.data.email);
 
       setTimeout(() => {
         setIsLoading(false);
