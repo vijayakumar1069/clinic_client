@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { loginFormSchema } from "@/lib/schema/loginFormSchema";
+import { loginAction } from "@/app/actions/loginAction";
 
 const LoginForm = ({ role = "admin" }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -33,34 +34,20 @@ const LoginForm = ({ role = "admin" }) => {
   const onSubmit = async (data) => {
     setIsLoading(true);
 
-    // Different API endpoints based on role
-    const apiEndpoint =
-      role === "doctor" ? "/api/auth/doctor-login" : "/api/auth/admin-login";
-
     // Different redirect paths based on role
     const redirectPath =
-      role === "doctor" ? "/doctor/dashboard" : "/admin/dashboard";
+      role === "doctor" ? "/doctor-dashboard" : "/admin-dashboard";
 
     try {
       // Simulate API call with different endpoints
-      console.log(`Calling ${apiEndpoint} with data:`, data);
+      console.log(`Calling  with data:`, data);
 
-      // In real implementation, replace with actual API call:
-      // const response = await fetch(apiEndpoint, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // });
-      // const result = await response.json();
+      const res = await loginAction(data, role);
+      console.log(res);
 
       setTimeout(() => {
-        alert(
-          `${
-            role === "doctor" ? "Doctor" : "Admin"
-          } login successful! Redirecting to dashboard...`
-        );
         setIsLoading(false);
-        // router.push(redirectPath);
+        router.push(redirectPath);
       }, 2000);
     } catch (error) {
       console.error("Login error:", error);
@@ -91,12 +78,12 @@ const LoginForm = ({ role = "admin" }) => {
               <Stethoscope className="w-8 h-8 text-white" />
             )}
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          {/* <h1 className="text-3xl font-bold text-gray-900 mb-2">
             HealthCare Clinic
           </h1>
           <p className="text-gray-600">
             {role === "doctor" ? "Doctor Portal Access" : "Admin Portal Access"}
-          </p>
+          </p> */}
         </div>
 
         {/* Login Form Card */}
