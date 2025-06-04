@@ -9,13 +9,13 @@ export const adminSidebarValues = [
   },
   {
     id: 2,
-    title: "Clients",
+    title: "Doctors",
     path: "/admin-doctors",
     icon: User,
   },
   {
     id: 3,
-    title: "Settings",
+    title: "Appointments",
     path: "/admin-appointments",
     icon: Settings,
   },

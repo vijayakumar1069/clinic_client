@@ -6,6 +6,7 @@ import { useState, useCallback } from "react";
 const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
   const fetchData = useCallback(async (url, method, body, token) => {
     const headers = new Headers();
@@ -19,10 +20,14 @@ const useFetch = () => {
     const config = {
       method: method.toUpperCase(),
       headers,
-      body: JSON.stringify(body),
-      credentials: "include", // Add credentials here
+      credentials: "include",
     };
-    const backendUrl=getBackendUrl();
+
+    if (method.toUpperCase() !== "GET" && method.toUpperCase() !== "HEAD") {
+      config.body = JSON.stringify(body);
+    }
+
+    const backendUrl = getBackendUrl();
     url = `${backendUrl}${url}`;
 
     try {
@@ -36,14 +41,15 @@ const useFetch = () => {
         setLoading(false);
         throw error;
       }
+
       setError(null);
       setLoading(false);
+      setData(data);
 
       return data;
     } catch (error) {
       setLoading(false);
       setError(error.message);
-
       throw error;
     }
   }, []);

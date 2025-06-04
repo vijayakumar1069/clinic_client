@@ -1,7 +1,9 @@
+"use server";
 import { cookies } from "next/headers";
 
 export async function logoutAction(url) {
   try {
+    console.log(url);
     const cookieStore = await cookies();
     const accessToken = cookieStore.get("access_token")?.value;
 
@@ -18,7 +20,8 @@ export async function logoutAction(url) {
 
     const { success, message } = await res.json();
     if (success) {
-      return { success: true, message: "Signed out successfully." };
+      cookieStore.delete("access_token");
+      return { success: true, message: "Successfully signed out." };
     } else {
       return { success: false, message: "Failed to sign out." };
     }

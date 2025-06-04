@@ -11,7 +11,7 @@ export async function loginAction(loginData, role = "admin") {
     const endpoint =
       role === "doctor"
         ? `${url}/api/doctor/doctor-login`
-        : `${url}/api/admin/admin-login`;
+        : `${url}/api/admin-auth/admin-login`;
 
     const res = await fetch(endpoint, {
       method: "POST",
@@ -25,7 +25,7 @@ export async function loginAction(loginData, role = "admin") {
     const { success, data, message, token } = await res.json();
 
     if (success && token) {
-      const cookieStore = cookies();
+      const cookieStore = await cookies();
 
       cookieStore.set("access_token", token, {
         httpOnly: true,
@@ -33,7 +33,7 @@ export async function loginAction(loginData, role = "admin") {
         sameSite:
           process.env.NEXT_PUBLIC_NODE_ENV === "production" ? "none" : "lax",
         path: "/",
-        maxAge: 7 * 24 * 60 * 60, // 7 days
+        maxAge: 1 * 24 * 60 * 60, // 7 days
       });
     }
 

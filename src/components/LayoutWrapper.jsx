@@ -13,7 +13,7 @@ const LayoutWrapper = ({ children }) => {
       <div className="flex flex-col flex-1">
         <Navbar isOpen={isOpen} />
         <main
-          className={`min-h-screen  transition-all duration-200 ${
+          className={`min-h-screen   transition-all duration-200 ${
             isOpen ? "ml-[240px]" : "ml-[72px]"
           }`}
         >

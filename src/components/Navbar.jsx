@@ -24,10 +24,11 @@ const Navbar = ({ isOpen }) => {
       setLoading(true);
       let url =
         userRole == "admin"
-          ? "/api/admin/admin-logout"
+          ? "/api/admin-auth/admin-logout"
           : "/api/doctor/doctor-logout";
       const endPoint = `${getBackendUrl()}${url}`;
       const res = await logoutAction(endPoint);
+      console.log(res);
       if (res.success) {
         userStorage.setState({
           userId: null,
