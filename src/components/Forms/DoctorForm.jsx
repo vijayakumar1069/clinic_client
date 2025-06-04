@@ -2,10 +2,17 @@ import { doctorformSchema } from "@/lib/schema/doctorSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 import { Input } from "../ui/input";
 import {
-    Select,
+  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
@@ -14,7 +21,7 @@ import {
 import { specializations, timeSlots } from "@/lib/consts/doctorConsts";
 import { Button } from "../ui/button";
 
-const DoctorForm = ({ doctor, onSubmit, onCancel }) => {
+const DoctorForm = ({ doctor, onSubmit, onCancel, loading }) => {
   const form = useForm({
     resolver: zodResolver(doctorformSchema),
     defaultValues: {
@@ -118,7 +125,7 @@ const DoctorForm = ({ doctor, onSubmit, onCancel }) => {
           <Button type="button" variant="outline" onClick={onCancel}>
             Cancel
           </Button>
-          <Button type="submit">
+          <Button type="submit" disabled={loading}>
             {doctor ? "Update Doctor" : "Add Doctor"}
           </Button>
         </div>

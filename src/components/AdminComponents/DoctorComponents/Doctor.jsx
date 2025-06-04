@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 
-import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 import useFetch from "@/app/hooks/useFetch";
 import useAccessToken from "@/app/hooks/useAccessToken";
@@ -9,6 +8,7 @@ import { toast } from "sonner";
 import DoctorFilter from "./DoctorFilter";
 import DoctorTable from "./DoctorTable";
 import DoctorDialog from "./DoctorDialog";
+import { Button } from "@/components/ui/button";
 
 const Doctor = () => {
   const [doctors, setDoctors] = useState([]);
@@ -169,6 +169,7 @@ const Doctor = () => {
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         onSubmit={handleSubmitDoctor}
+        loading={loading}
       />
     </div>
   );

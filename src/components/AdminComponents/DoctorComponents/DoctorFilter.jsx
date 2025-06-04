@@ -1,9 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Filter, Search } from "lucide-react";
-import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+
 import { specializations, timeSlots } from "@/lib/consts/doctorConsts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Filter, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const DoctorFilter = ({
   searchTerm,

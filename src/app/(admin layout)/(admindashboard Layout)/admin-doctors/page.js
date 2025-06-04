@@ -1,4 +1,5 @@
-import AdminsDoctor from "@/components/AdminComponents/Doctor";
+
+import Doctor from "@/components/AdminComponents/DoctorComponents/Doctor";
 import { fetchServerSideData } from "@/lib/fetchServerSideData";
 
 export default async function AdminDoctorsPage() {
@@ -18,7 +19,7 @@ export default async function AdminDoctorsPage() {
   }
   return (
     <div>
-      <AdminsDoctor doctors={doctors} />
+      <Doctor doctors={doctors} />
     </div>
   );
 }
