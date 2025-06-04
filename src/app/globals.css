@@ -11,7 +11,7 @@
   --color-foreground: var(--foreground);
 
   --font-poppins: var(--font-geist-poppins);
-  --color-primary: var(--color-blue-500);
+  --color-primary: var(--color-blue-700);
   --color-secondary: var(--color-white);
   --color-success: var(--color-green-500);
   --color-warning: var(--color-yellow-500);

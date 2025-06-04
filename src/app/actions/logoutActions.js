@@ -1,0 +1,28 @@
+import { cookies } from "next/headers";
+
+export async function logoutAction(url) {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("access_token")?.value;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: null,
+      credentials: "include",
+    });
+
+    const { success, message } = await res.json();
+    if (success) {
+      return { success: true, message: "Signed out successfully." };
+    } else {
+      return { success: false, message: "Failed to sign out." };
+    }
+  } catch (error) {
+    return { success: false, message: "Failed to sign out." };
+  }
+}

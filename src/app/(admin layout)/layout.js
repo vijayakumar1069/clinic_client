@@ -5,7 +5,7 @@ export const metadata = {
   description: "Admin Login",
 };
 
-export default function RootLayout({ children }) {
+export default function AdminRootLayout({ children }) {
   return (
     <html lang="en">
       <body>{children}</body>
