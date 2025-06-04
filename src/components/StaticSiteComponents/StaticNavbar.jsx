@@ -69,16 +69,7 @@ const StaticNavbar = () => {
               >
                 Admin Login
               </Link>
-              <Link
-                href="/doctor-login"
-                className={`px-4 py-2 rounded-full transition-all ${
-                  scrolled
-                    ? "bg-primary text-white hover:bg-primary/90"
-                    : "bg-white text-primary hover:bg-white/90"
-                }`}
-              >
-                Doctor Login
-              </Link>
+             
             </div>
           </div>
 
@@ -133,14 +124,7 @@ const StaticNavbar = () => {
               >
                 Admin Login
               </Link>
-              <Link
-                href="/doctor-login"
-                className={`px-4 py-3 rounded-full text-center ${
-                  scrolled ? "bg-primary text-white" : "bg-white text-primary"
-                }`}
-              >
-                Doctor Login
-              </Link>
+             \
             </div>
           </div>
         </div>

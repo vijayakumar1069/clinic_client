@@ -1,4 +1,4 @@
-import AdminsDoctor from "@/components/AdminComponents/AdminsDoctor";
+import AdminsDoctor from "@/components/AdminComponents/Doctor";
 import { fetchServerSideData } from "@/lib/fetchServerSideData";
 
 export default async function AdminDoctorsPage() {

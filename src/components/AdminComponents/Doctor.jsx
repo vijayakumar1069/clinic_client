@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import AdminsDoctorFilter from "./AdminsDoctorFilter";
-import AdminsDoctorDialog from "./AdminsDoctorDialog";
-import AdminsDoctorTable from "./AdminsDoctorTable";
-import { sampleDoctors } from "@/lib/consts/doctorConsts";
+
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 import useFetch from "@/app/hooks/useFetch";
 import useAccessToken from "@/app/hooks/useAccessToken";
 import { toast } from "sonner";
+import DoctorFilter from "./DoctorFilter";
+import DoctorTable from "./DoctorTable";
+import DoctorDialog from "./DoctorDialog";
 
-const AdminsDoctor = () => {
+const Doctor = () => {
   const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -117,7 +117,7 @@ const AdminsDoctor = () => {
         token
       );
       if (res?.success) {
-        setDoctors([...doctors, res?.data]);
+        setDoctors([res?.data, ...doctors]);
         toast.success("Doctor added successfully", {
           description: "Successfully added doctor.",
           duration: 5000,
@@ -148,7 +148,7 @@ const AdminsDoctor = () => {
         </Button>
       </div>
 
-      <AdminsDoctorFilter
+      <DoctorFilter
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
         specializationFilter={specializationFilter}
@@ -158,13 +158,13 @@ const AdminsDoctor = () => {
         resultCount={doctors.length}
       />
 
-      <AdminsDoctorTable
+      <DoctorTable
         doctors={doctors}
         onEdit={handleEditDoctor}
         onDelete={handleDeleteDoctor}
       />
 
-      <AdminsDoctorDialog
+      <DoctorDialog
         doctor={selectedDoctor}
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
@@ -174,4 +174,4 @@ const AdminsDoctor = () => {
   );
 };
 
-export default AdminsDoctor;
+export default Doctor;

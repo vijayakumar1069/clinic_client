@@ -2,7 +2,7 @@ import React from "react";
 import DoctorForm from "../Forms/DoctorForm";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 
-const AdminsDoctorDialog = ({ doctor, isOpen, onOpenChange, onSubmit }) => {
+const DoctorDialog = ({ doctor, isOpen, onOpenChange, onSubmit }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[525px]">
@@ -21,4 +21,4 @@ const AdminsDoctorDialog = ({ doctor, isOpen, onOpenChange, onSubmit }) => {
   );
 };
 
-export default AdminsDoctorDialog;
+export default DoctorDialog;

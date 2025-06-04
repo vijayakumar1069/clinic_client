@@ -12,7 +12,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Edit, Trash2 } from "lucide-react";
 
-const AdminsDoctorTable = ({ doctors, onEdit, onDelete }) => {
+const DoctorTable = ({ doctors, onEdit, onDelete }) => {
   const getTimeSlotColor = (slot) => {
     const colors = {
       morning: "bg-yellow-100 text-yellow-800",
@@ -112,4 +112,4 @@ const AdminsDoctorTable = ({ doctors, onEdit, onDelete }) => {
   );
 };
 
-export default AdminsDoctorTable;
+export default DoctorTable;

@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { specializations, timeSlots } from "@/lib/consts/doctorConsts";
 
-const AdminsDoctorFilter = ({
+const DoctorFilter = ({
   searchTerm,
   onSearchChange,
   specializationFilter,
@@ -74,4 +74,4 @@ const AdminsDoctorFilter = ({
   );
 };
 
-export default AdminsDoctorFilter;
+export default DoctorFilter;
