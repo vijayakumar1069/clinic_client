@@ -1,3 +1,3 @@
 export default function AdminLoginPage() {
-  return <div>AdminLogin Page</div>;
+  return <div>AdminLogin Page check</div>;
 }
