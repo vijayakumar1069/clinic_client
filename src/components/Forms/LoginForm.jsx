@@ -37,23 +37,21 @@ const LoginForm = ({ role = "admin" }) => {
   const onSubmit = async (data) => {
     setIsLoading(true);
 
-    // Different redirect paths based on role
-    const redirectPath =
-      role === "doctor" ? "/doctor-dashboard" : "/admin-dashboard";
+   
 
     try {
-      // Simulate API call with different endpoints
-      console.log(`Calling  with data:`, data);
+    
+ 
 
       const res = await loginAction(data, role);
-      console.log("res", res);
+     
       setCurrentUserId(res.data._id);
       setCurrentUserRole(res.data.role);
       setCurrentUserEmail(res.data.email);
 
       setTimeout(() => {
         setIsLoading(false);
-        router.push(redirectPath);
+        router.push("/admin-appointments");
       }, 2000);
     } catch (error) {
       console.error("Login error:", error);
@@ -71,7 +69,7 @@ const LoginForm = ({ role = "admin" }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Header Section */}
+     
         <div className="text-center mb-8">
           <div
             className={`mx-auto w-16 h-16 ${
@@ -84,12 +82,7 @@ const LoginForm = ({ role = "admin" }) => {
               <Stethoscope className="w-8 h-8 text-white" />
             )}
           </div>
-          {/* <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            HealthCare Clinic
-          </h1>
-          <p className="text-gray-600">
-            {role === "doctor" ? "Doctor Portal Access" : "Admin Portal Access"}
-          </p> */}
+      
         </div>
 
         {/* Login Form Card */}

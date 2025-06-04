@@ -1,4 +1,3 @@
-
 import Doctor from "@/components/AdminComponents/DoctorComponents/Doctor";
 import { fetchServerSideData } from "@/lib/fetchServerSideData";
 

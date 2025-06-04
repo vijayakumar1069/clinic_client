@@ -57,7 +57,7 @@ const ContactForm = () => {
     const getDoctors = async () => {
       const res = await fetchData("/api/all-doctors", "GET", null, null, false);
       if (res.success) {
-        console.log(res.data);
+    
         setDoctors(res.data);
       } else {
         toast.error(res.error);
@@ -73,7 +73,7 @@ const ContactForm = () => {
         ...data,
         date: format(data.date, "yyyy-MM-dd"),
       };
-      console.log(formattedData);
+  
 
       const res = await fetchData(
         `/api/book-an-appointmet`,
@@ -82,7 +82,7 @@ const ContactForm = () => {
         null,
         false
       );
-      console.log(res);
+    
       if (res.success) {
         if (res.success) {
           form.reset({

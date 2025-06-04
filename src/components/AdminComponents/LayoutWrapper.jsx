@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Toaster } from "./ui/sonner";
+import { Toaster } from "../ui/sonner";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 

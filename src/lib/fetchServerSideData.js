@@ -9,7 +9,6 @@ export async function fetchServerSideData(endpoint, options = {}) {
     options.maxRetries || 10,
     options.retryDelay || 1000
   );
-  console.log("token", token);
 
   // ✅ If no valid token after retry, redirect or throw
   if (!token) {
@@ -31,9 +30,10 @@ export async function fetchServerSideData(endpoint, options = {}) {
 
   try {
     const url = getBackendUrl();
+  
     const response = await fetch(`${url}${endpoint}`, config);
     const res = await response.json();
-
+   
     if (res.success) {
       return res.data;
     } else {

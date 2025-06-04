@@ -28,7 +28,7 @@ const Navbar = ({ isOpen }) => {
           : "/api/doctor/doctor-logout";
       const endPoint = `${getBackendUrl()}${url}`;
       const res = await logoutAction(endPoint);
-      console.log(res);
+      
       if (res.success) {
         userStorage.setState({
           userId: null,

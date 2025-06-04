@@ -34,7 +34,7 @@ const useFetch = () => {
       setLoading(true);
       const response = await fetch(url, config);
       const data = await response.json();
-      console.log(data);
+     
 
       if (!data.success) {
         const error = new Error(data.message || "Request failed");

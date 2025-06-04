@@ -10,67 +10,14 @@ import {
   doctorSidebarValues,
 } from "@/lib/consts/sidebarConsts";
 
-const sidebarVariants = {
-  open: { width: 240 },
-  closed: { width: 72 },
-};
-
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const pathname = usePathname();
   const { userRole } = userStorage();
-  // Initialize with empty array instead of undefined
-  const [filteredSidebarItems, setFilteredSidebarItems] = useState([]);
 
   const toggleSidebar = useCallback(
     () => setIsOpen((prev) => !prev),
     [setIsOpen]
   );
-
-  useEffect(() => {
-    if (userRole === "admin") {
-      setFilteredSidebarItems(adminSidebarValues);
-    } else if (userRole === "doctor") {
-      setFilteredSidebarItems(doctorSidebarValues);
-    } else {
-      // Set default empty array if no role
-      setFilteredSidebarItems([]);
-    }
-  }, [userRole]);
-
-  // Early return with loading state if no items yet
-  if (!filteredSidebarItems || filteredSidebarItems.length === 0) {
-    return (
-      <aside
-        className="fixed top-0 left-0 z-40 h-screen bg-white border-r border-dialog_inside_border_color shadow-sm flex flex-col p-3 transition-all"
-        style={{ width: isOpen ? 240 : 72 }}
-      >
-        {/* Sidebar Toggle Button */}
-        <button
-          className="absolute top-5 -right-4 bg-active-link hover:bg-green text-white p-1 rounded-full transition-colors"
-          onClick={toggleSidebar}
-          aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}
-        >
-          {isOpen ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
-        </button>
-
-        {/* Logo or Short Form */}
-        <div className="flex items-center justify-center mb-10">
-          <span className="text-active-link font-bold text-xl tracking-wide">
-            {isOpen ? "CLINIC" : "CL"}
-          </span>
-        </div>
-
-        {/* Loading state */}
-        <nav className="flex flex-col gap-2">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded mb-2"></div>
-            <div className="h-8 bg-gray-200 rounded mb-2"></div>
-            <div className="h-8 bg-gray-200 rounded"></div>
-          </div>
-        </nav>
-      </aside>
-    );
-  }
 
   return (
     <aside
@@ -95,7 +42,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
       {/* Sidebar Navigation */}
       <nav className="flex flex-col gap-2">
-        {filteredSidebarItems.map((item) => {
+        {adminSidebarValues.map((item) => {
           const isActive = pathname === item.path;
 
           return (

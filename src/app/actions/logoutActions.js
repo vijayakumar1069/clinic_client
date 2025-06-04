@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 export async function logoutAction(url) {
   try {
-    console.log(url);
+  
     const cookieStore = await cookies();
     const accessToken = cookieStore.get("access_token")?.value;
 

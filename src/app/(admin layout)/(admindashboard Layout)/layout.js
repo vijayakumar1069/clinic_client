@@ -1,4 +1,4 @@
-import LayoutWrapper from "@/components/LayoutWrapper";
+import LayoutWrapper from "@/components/AdminComponents/LayoutWrapper";
 import "../../globals.css";
 
 export const metadata = {

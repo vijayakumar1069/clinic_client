@@ -4,7 +4,7 @@ import { getBackendUrl } from "@/lib/getBackendUrl";
 import { cookies } from "next/headers";
 
 const url = getBackendUrl();
-console.log(url);
+
 
 export async function loginAction(loginData, role = "admin") {
   try {
