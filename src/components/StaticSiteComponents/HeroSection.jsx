@@ -5,9 +5,9 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="bg-gradient-to-r scroll-mt-16 from-primary to-primary/90 pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden"
+      className="bg-gradient-to-r scroll-mt-16 from-primary to-primary/90 pt-24 pb-16 md:pt-32 md:pb-24 py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto  relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-8">
           {/* Text Content */}
           <div className="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
@@ -40,7 +40,7 @@ const HeroSection = () => {
             <div className="relative w-full aspect-square md:aspect-video">
               <div className="absolute inset-0 bg-white opacity-10 rounded-2xl transform rotate-6 -z-10" />
               <Image
-                src="/doctor.jpg" 
+                src="/doctor.jpg"
                 alt="Clinic Appointment Dashboard"
                 fill
                 priority
