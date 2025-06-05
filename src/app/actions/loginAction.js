@@ -5,13 +5,9 @@ import { cookies } from "next/headers";
 
 const url = getBackendUrl();
 
-
-export async function loginAction(loginData, role = "admin") {
+export async function loginAction(loginData) {
   try {
-    const endpoint =
-      role === "doctor"
-        ? `${url}/api/doctor/doctor-login`
-        : `${url}/api/admin-auth/admin-login`;
+    const endpoint = `${url}/api/admin-auth/admin-login`;
 
     const res = await fetch(endpoint, {
       method: "POST",

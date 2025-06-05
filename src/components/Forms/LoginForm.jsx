@@ -37,17 +37,12 @@ const LoginForm = ({ role = "admin" }) => {
   const onSubmit = async (data) => {
     setIsLoading(true);
 
-   
-
     try {
-    
- 
+      const res = await loginAction(data);
 
-      const res = await loginAction(data, role);
-     
-      setCurrentUserId(res.data._id);
-      setCurrentUserRole(res.data.role);
-      setCurrentUserEmail(res.data.email);
+      setCurrentUserId(res.data?.id);
+      setCurrentUserRole(res.data?.role);
+      setCurrentUserEmail(res.data?.email);
 
       setTimeout(() => {
         setIsLoading(false);
@@ -69,7 +64,6 @@ const LoginForm = ({ role = "admin" }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-     
         <div className="text-center mb-8">
           <div
             className={`mx-auto w-16 h-16 ${
@@ -82,7 +76,6 @@ const LoginForm = ({ role = "admin" }) => {
               <Stethoscope className="w-8 h-8 text-white" />
             )}
           </div>
-      
         </div>
 
         {/* Login Form Card */}
